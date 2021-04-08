@@ -1,9 +1,13 @@
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing.module';
 import { AngularMaterialModule } from './share/angular-material/angular-material.module';
 
 @NgModule({
@@ -11,9 +15,13 @@ import { AngularMaterialModule } from './share/angular-material/angular-material
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
+    CommonModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    HttpClientModule,
+    RouterModule,
+    AngularMaterialModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
