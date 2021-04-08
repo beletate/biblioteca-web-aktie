@@ -8,11 +8,13 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
+import { HeaderComponent } from './home/header/header.component';
 import { AngularMaterialModule } from './share/angular-material/angular-material.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,    

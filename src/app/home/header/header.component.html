@@ -1,0 +1,21 @@
+<p>
+    <mat-toolbar color="primary">
+      <button mat-button [matMenuTriggerFor]="form">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #form="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="livros">Livros</button>
+      </mat-menu>
+      <mat-menu #livros="matMenu">
+        <button mat-menu-item>Cadastro</button>
+        <button mat-menu-item>Detalhes</button>
+      </mat-menu>
+      <span>Aktie Now</span>
+      <span class="example-spacer"></span>
+      <a style="color: white;" target="_blank">
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="heart">
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </a>
+    </mat-toolbar>
+  </p>
