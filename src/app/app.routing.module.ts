@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ListBooksComponent } from './books/list-books/list-books.component';
+import { RegisterBooksComponent } from './books/register-books/register-books.component';
 import { HomeComponent } from './home/home/home.component';
 
 const routes: Routes = [
@@ -8,11 +10,19 @@ const routes: Routes = [
         component: HomeComponent,
 
     },
+    {
+        path: 'cadastro-livro',
+        component: RegisterBooksComponent
+    },
+    {
+        path: 'detalhes-livro',
+        component: ListBooksComponent
+    }
 ]
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes, { useHash: true, relativeLinkResolution: 'legacy' })
+        RouterModule.forRoot(routes, { useHash: true })
     ],
     exports: [RouterModule]
 })

@@ -6,6 +6,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app.routing.module';
+import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterBooksComponent } from '../books/register-books/register-books.component';
+import { ListBooksComponent } from '../books/list-books/list-books.component';
 
 
 
@@ -13,11 +17,15 @@ import { AppRoutingModule } from '../app.routing.module';
   declarations: [
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterBooksComponent,
+    ListBooksComponent
   ],
   imports: [
     CommonModule,    
     BrowserModule,
+    RouterModule,    
+    BrowserAnimationsModule,
     AppRoutingModule,
     AngularMaterialModule
   ]
