@@ -1,0 +1,49 @@
+<div class="container mt-5">
+    <form [formGroup]="bookForm" (ngSubmit)="submit()" novalidate>
+        <div class="row mt-5">
+            <div class="title col-sm mt-4">
+                <h1>Cadastro de Livros</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-5" ngClass="checkError('titulo')">
+                <label class="form-control-label" for="titulo">Título <em>*</em></label>
+                <input type="text" class="form-control" formControlName="titulo" id="titulo" placeholder="O Hobbit">
+                <div *ngIf="touchedVerify('titulo')" class="form-control-feedback">Por favor, insira um título válido.
+                </div>
+            </div>
+
+            <div class="form-group col-md-3" [ngClass]="checkError('data_lancamento')">
+                <label date-format="DD-MM-YYYY HH:mm" class="form-control-label" for="data_hora_ocorrencia">Data de
+                    Lançamento
+                    <em>*</em></label>
+                <input type="date" class="form-control" formControlName="data_lancamento" id="data_lancamento">
+                <div *ngIf="touchedVerify('data_lancamento')" class="form-control-feedback">Campos inválidos.
+                </div>
+            </div>
+
+            <div class="form-group col-md-4" ngClass="checkError('autor')">
+                <label class="form-control-label" for="autor">Autor <em>*</em></label>
+                <input type="text" class="form-control" formControlName="autor" id="autor" placeholder="J. R. R. Tolkien">
+                <div *ngIf="touchedVerify('autor')" class="form-control-feedback">Campo de autor inválido.
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12" ngClass="checkError('descricao')">
+                <label class="form-control-label" for="descricao">Descrição <em>*</em></label>
+                <textarea type="text" class="form-control" formControlName="descricao" id="descricao"></textarea>
+                <div *ngIf="touchedVerify('descricao')" class="form-control-feedback">Descrição inválida.
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="align-self-end mb-4">
+                <button type="button" class="btn btn-danger" (click)="formReset()">Limpar</button>
+                <button type="submit" class="btn btn-success mx-3" [disabled]="!bookForm.valid">Enviar</button>
+               <!--  <button type="submit" class="btn btn-success mx-3">Salvar</button> -->
+            </div>
+        </div>
+    </form>
+</div>

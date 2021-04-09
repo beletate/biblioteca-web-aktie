@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 
 
 import { take } from "rxjs/operators";
@@ -19,18 +19,25 @@ export class BooksService {
   ) { }
 
   create(book: Book) {
-    return this.http.post(`${API}livros`, book).pipe(take(1));
+    console.log(book)
+    console.log(this.http.post(`${API}create`, book).pipe(take(1)))
+    return this.http.post(`${API}create`, book).pipe(take(1));
   }
   
   read(): Observable<Book[]> {
-    return this.http.get<Book[]>(`${API}livros`)
+    return this.http.get<Book[]>(`${API}`)
   }
 
   update(livro){
-    return this.http.put(`${API}livros/${livro.id}`,livro).pipe(take(1));
+    return this.http.put(`${API}update/${livro.id}`,livro).pipe(take(1));
   }
 
   delete(id) {
-    return this.http.delete<Book[]>(`${API}livros/${id}`);
+    return this.http.delete<Book[]>(`${API}delete/${id}`);
+  }
+
+  getById(id) {
+    if (!id) return EMPTY;
+    return this.http.get<Book>(`${API}show/${id}`);
   }
 }
