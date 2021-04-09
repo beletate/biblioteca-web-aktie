@@ -19,8 +19,6 @@ export class BooksService {
   ) { }
 
   create(book: Book) {
-    console.log(book)
-    console.log(this.http.post(`${API}create`, book).pipe(take(1)))
     return this.http.post(`${API}create`, book).pipe(take(1));
   }
   

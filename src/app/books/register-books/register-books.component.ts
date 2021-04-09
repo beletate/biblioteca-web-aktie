@@ -31,6 +31,7 @@ export class RegisterBooksComponent implements OnInit {
       );
 
     this.bookForm = this.formBuilder.group({
+      id: [null],
       titulo: ['', [Validators.required]],
       autor: ['', [Validators.required]],
       descricao: ['', [Validators.required]],
@@ -66,11 +67,11 @@ export class RegisterBooksComponent implements OnInit {
 
   fillForm(book: Book) {
     this.bookForm.patchValue({
-      id: book[0].id,
-      titulo: book[0].nome,
-      autor: book[0].autor,
-      descricao: book[0].descricao,
-      data_lancamento: book[0].data_lancamento
+      id: book.id,
+      titulo: book.titulo,
+      autor: book.autor,
+      descricao: book.descricao,
+      data_lancamento: book.data_lancamento
     })
   }
 

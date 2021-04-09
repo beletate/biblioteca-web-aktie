@@ -11,11 +11,15 @@ const routes: Routes = [
 
     },
     {
-        path: 'cadastro-livro',
+        path: 'cadastro/livro',
         component: RegisterBooksComponent
     },
     {
-        path: 'detalhes-livro',
+        path: 'cadastro/livro/:id',
+        component: RegisterBooksComponent
+    },
+    {
+        path: 'lista/livro',
         component: ListBooksComponent
     }
 ]

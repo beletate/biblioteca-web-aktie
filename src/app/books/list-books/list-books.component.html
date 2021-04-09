@@ -1,1 +1,54 @@
-<p>list-books works!</p>
+<div class="container ">
+    <form [formGroup]="booksForm" novalidate>
+        <div class="row mt-5">
+            <div class="title col-sm mt-4">
+                <h1>Livros Cadastrados</h1>
+            </div>
+        </div>
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr style="text-align: center;">
+                        <th scope="col">Obra</th>
+                        <th scope="col">Autor</th>
+                    </tr>
+                </thead>
+            </table>
+                    <mat-accordion>
+                        <mat-expansion-panel *ngFor="let livro of livros">
+                            <mat-expansion-panel-header class="row justify-content-between">
+                                <mat-panel-title class="col-8">
+                                    {{livro.titulo}}
+                                </mat-panel-title>
+                                <mat-panel-description class="col-8">
+                                    {{livro.autor}}
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="row mt-2">
+                                <div class="col-8">
+                                    <label class="form-control-label font-weight-bold">Data de Lançamento: </label>
+                                    {{livro.data_lancamento | date: 'dd/MM/YYYY'}}
+                                </div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="col-12">
+                                    <label class="form-control-label font-weight-bold">Descrição: </label>
+                                    {{livro.descricao}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-auto mr-auto"></div>
+                                <div class="col-auto">
+                                    <button class="btn btn-outline-primary ml-2"
+                                        (click)="updateBook(livro.id)">Editar</button>
+                                    <button class="btn btn-outline-danger ml-2"
+                                        (click)="deleteBook(livro.id)">Excluir</button>
+                                </div>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+
+        </div>
+    </form>
+</div>
