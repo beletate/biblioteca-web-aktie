@@ -2,6 +2,11 @@ export interface Book{
     id?: number
     titulo: string
     autor: string
-    descricao: string
-    data_lancamento: Date
+    sinopse: string
+    data_publicacao: Date
+    edicao: number
+    editora: string
+    idioma: string
+    capa_url: string
+
 }

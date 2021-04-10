@@ -34,8 +34,12 @@ export class RegisterBooksComponent implements OnInit {
       id: [null],
       titulo: ['', [Validators.required]],
       autor: ['', [Validators.required]],
-      descricao: ['', [Validators.required]],
-      data_lancamento: ['', [Validators.required]]
+      sinopse: ['', [Validators.required]],
+      data_publicacao: ['', [Validators.required]],
+      edicao: ['', [Validators.required]],
+      editora: ['', [Validators.required]],
+      idioma: ['', [Validators.required]],
+      capa_url: ['', [Validators.required]],
     })
   }
 
@@ -45,7 +49,7 @@ export class RegisterBooksComponent implements OnInit {
       this.BooksService.update(updateBook).subscribe(
         success => {
           alert('Livro editado.')
-          this.bookForm.reset()
+          this.formReset()
         },
         error => {
           alert('Erro ao editar.')
@@ -56,7 +60,7 @@ export class RegisterBooksComponent implements OnInit {
       this.BooksService.create(createBook).subscribe(
         success => {
           alert('Livro cadastrado.')
-          this.bookForm.reset()
+          this.formReset()
         },
         error => {
           alert('Erro ao cadastrar.')
@@ -65,19 +69,38 @@ export class RegisterBooksComponent implements OnInit {
     }
   }
 
+  onFileChange(event) {
+    const reader = new FileReader()
+
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files
+      reader.readAsDataURL(file)
+
+      reader.onload = () => {
+        let imageSrc = reader.result as string
+        this.bookForm.patchValue({ capa_url: imageSrc })
+      }
+    }
+  }
+
   fillForm(book: Book) {
     this.bookForm.patchValue({
       id: book.id,
       titulo: book.titulo,
       autor: book.autor,
-      descricao: book.descricao,
-      data_lancamento: book.data_lancamento
+      sinopse: book.sinopse,
+      data_publicacao: book.data_publicacao,
+      edicao: book.edicao,
+      editora: book.editora,
+      idioma: book.idioma,
+      capa_url: book.capa_url,
     })
   }
 
   formReset() {
+    (<HTMLInputElement>document.getElementById('capa_url')).value = "";
     this.bookForm.reset();
-}
+  }
   checkError(field) {
     return {
       'has-danger': this.touchedVerify(field)
@@ -86,5 +109,5 @@ export class RegisterBooksComponent implements OnInit {
 
   touchedVerify(field) {
     return !this.bookForm.get(field).valid && this.bookForm.get(field).touched;
-}
+  }
 }

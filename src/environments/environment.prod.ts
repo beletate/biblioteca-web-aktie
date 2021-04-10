@@ -1,4 +1,4 @@
 export const environment = {
   production: true,  
-  apiUrl: 'http://beletate-com-br.umbler.net/'
+  apiUrl: 'http://beletate-aktie-com-br.umbler.net/'
 };

@@ -1,11 +1,13 @@
 <div class="container mt-5">
     <form [formGroup]="bookForm" (ngSubmit)="submit()" novalidate>
         <div class="row mt-5">
-            <div class="title col-sm mt-4">
+            <div class="title col-sm my-4 text-center">
                 <h1>Cadastro de Livros</h1>
+
             </div>
         </div>
         <div class="row">
+
             <div class="form-group col-md-5" ngClass="checkError('titulo')">
                 <label class="form-control-label" for="titulo">Título <em>*</em></label>
                 <input type="text" class="form-control" formControlName="titulo" id="titulo" placeholder="O Hobbit">
@@ -13,28 +15,64 @@
                 </div>
             </div>
 
-            <div class="form-group col-md-3" [ngClass]="checkError('data_lancamento')">
-                <label date-format="DD-MM-YYYY HH:mm" class="form-control-label" for="data_hora_ocorrencia">Data de
-                    Lançamento
-                    <em>*</em></label>
-                <input type="date" class="form-control" formControlName="data_lancamento" id="data_lancamento">
-                <div *ngIf="touchedVerify('data_lancamento')" class="form-control-feedback">Campos inválidos.
-                </div>
-            </div>
-
             <div class="form-group col-md-4" ngClass="checkError('autor')">
                 <label class="form-control-label" for="autor">Autor <em>*</em></label>
-                <input type="text" class="form-control" formControlName="autor" id="autor" placeholder="J. R. R. Tolkien">
+                <input type="text" class="form-control" formControlName="autor" id="autor"
+                    placeholder="J. R. R. Tolkien">
                 <div *ngIf="touchedVerify('autor')" class="form-control-feedback">Campo de autor inválido.
                 </div>
             </div>
-            
+
+
+            <div class="form-group col-md-3" [ngClass]="checkError('data_publicacao')">
+                <label date-format="DD-MM-YYYY HH:mm" class="form-control-label" for="data_publicacao">Data de
+                    Publicação
+                    <em>*</em></label>
+                <input type="date" class="form-control" formControlName="data_publicacao" id="data_publicacao">
+                <div *ngIf="touchedVerify('data_publicacao')" class="form-control-feedback">Campos inválidos.
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-2" ngClass="checkError('edicao')">
+                <label class="form-control-label" for="edicao">Edição <em>*</em></label>
+                <input type="number" class="form-control" formControlName="edicao" id="edicao" onkeyup="if(this.value<0){this.value= this.value * -1}">
+                <div *ngIf="touchedVerify('edicao')" class="form-control-feedback">Edição inválida.
+                </div>
+            </div>
+            <div class="form-group col-md-4" ngClass="checkError('editora')">
+                <label class="form-control-label" for="editora">Editora <em>*</em></label>
+                <input type="text" class="form-control" formControlName="editora" id="editora"
+                    placeholder="WMF Martins Fontes">
+                <div *ngIf="touchedVerify('editora')" class="form-control-feedback">Campo de editora inválida.
+                </div>
+                
+            </div>
+            <div class="form-group col-md-2" [ngClass]="checkError('idioma')">
+                <label class="form-control-label" for="idioma">Idioma <em>*</em></label>
+                <select id="idioma" class="form-control" formControlName="idioma">
+                    <option disabled selected></option>
+                    <option>Inglês</option>
+                    <option>Português</option>
+                    <option>Outro</option>
+                </select>
+                <div *ngIf="touchedVerify('idioma')" class="form-control-feedback">Forma inválida.
+                </div>
+            </div>
+            <div class="form-group col-md-4" [ngClass]="checkError('capa_url')">
+                <label date-format="DD-MM-YYYY HH:mm" class="form-control-label" for="capa_url">Capa do Livro
+                    <em>*</em></label>
+                <input type="file" class="form-control-file" id="capa_url" (change)="onFileChange($event)" name="file">
+                <div *ngIf="touchedVerify('capa_url')" class="form-control-feedback">Campo obrigatório.
+                </div>
+            </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-12" ngClass="checkError('descricao')">
-                <label class="form-control-label" for="descricao">Descrição <em>*</em></label>
-                <textarea type="text" class="form-control" formControlName="descricao" id="descricao"></textarea>
-                <div *ngIf="touchedVerify('descricao')" class="form-control-feedback">Descrição inválida.
+            <div class="form-group col-md-12" ngClass="checkError('sinopse')">
+                <label class="form-control-label" for="sinopse">Sinopse <em>*</em></label>
+                <textarea type="text" class="form-control" formControlName="sinopse" id="sinopse"></textarea>
+                <div *ngIf="touchedVerify('sinopse')" class="form-control-feedback">Sinopse inválida.
                 </div>
             </div>
         </div>
@@ -42,7 +80,6 @@
             <div class="align-self-end mb-4">
                 <button type="button" class="btn btn-danger" (click)="formReset()">Limpar</button>
                 <button type="submit" class="btn btn-success mx-3" [disabled]="!bookForm.valid">Enviar</button>
-               <!--  <button type="submit" class="btn btn-success mx-3">Salvar</button> -->
             </div>
         </div>
     </form>
