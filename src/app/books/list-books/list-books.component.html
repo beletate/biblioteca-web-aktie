@@ -5,7 +5,7 @@
                 <h1>Livros Cadastrados</h1>
             </div>
         </div>
-        <div class="container">
+        <div class="container-fluid">
             <table class="table">
                 <thead>
                     <tr style="text-align: center;">
@@ -24,22 +24,100 @@
                             {{livro.autor}}
                         </mat-panel-description>
                     </mat-expansion-panel-header>
-                    <div class="row mt-2">
-                        <div class="col-4">
-
-                            <img [src]="livro.capa_url">
+                    <div class="row my-2">
+                        <div class="col-lg-4">
+                            <img class="img-fluid rounded" [src]="livro.capa_url">
                         </div>
-                        <div class="col-8">
-                            <label class="form-control-label font-weight-bold">Data de Lançamento: </label>
-                            {{livro.data_publicacao | date: 'dd/MM/YYYY'}}
+                        <div class="col-lg-8 my-2">
+                            <div class="row text-center align-middle">
+                                <div class="col-md-3  rpi-attribute-content">
+                                    <div class=" a-spacing-small a-text-center rpi-attribute-label">
+                                        <span>Editora</span>
+                                    </div>
+                                    <div class=" a-spacing-small a-text-center">
+                                        <span class="material-icons">
+                                            apartment
+                                        </span>
+                                    </div>
+                                    <div class=" a-spacing-none a-text-center rpi-attribute-value">
+                                        <b><span>{{livro.editora}}</span></b>
+                                    </div>
+                                </div>
+                                <div class="col-md-3  rpi-attribute-content">
+                                    <div class="a-spacing-small a-text-center rpi-attribute-label">
+                                        <span>Edição</span>
+                                    </div>
+                                    <div class=" a-spacing-small a-text-center">
+                                        <span style="vertical-align:text-bottom; font-weight:bold"
+                                            class="material-icons">#</span>
+
+                                    </div>
+                                    <div class=" a-spacing-none a-text-center rpi-attribute-value">
+                                        <b><span>{{livro.edicao}}</span></b>
+                                    </div>
+                                </div>
+                                <div class="col-md-3  rpi-attribute-content">
+                                    <div class="a-spacing-small a-text-center rpi-attribute-label">
+                                        <span>Idioma</span>
+                                    </div>
+                                    <div class=" a-spacing-small a-text-center">
+                                        <span style="vertical-align:text-bottom; font-weight:bold"
+                                            class="material-icons">g_translate</span>
+                                    </div>
+                                    <div class=" a-spacing-none a-text-center rpi-attribute-value">
+                                        <b><span>{{livro.idioma}}</span></b>
+                                    </div>
+                                </div>
+                                <div class="col-md-3  rpi-attribute-content">
+                                    <div class="a-spacing-small a-text-center rpi-attribute-label">
+                                        <span>Data de Publicação</span>
+                                    </div>
+                                    <div class=" a-spacing-small a-text-center">
+                                        <span style="vertical-align:text-bottom; font-weight:bold"
+                                            class="material-icons">date_range</span>
+                                    </div>
+                                    <div class=" a-spacing-none a-text-center rpi-attribute-value">
+                                        <b><span>{{livro.data_publicacao | date: 'dd/MM/YYYY'}}</span></b>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-3 text-center">
+                                    <label>Edição</label>
+                                    <span style="vertical-align:text-bottom; font-weight:bold"
+                                        class="material-icons">#</span>
+                                    <h4>{{livro.edicao}}ª</h4>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <label>Editora</label>
+                                    <span class="material-icons">
+                                        apartment
+                                    </span>
+                                    <h4>{{livro.editora}}</h4>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <label>Data de Publicação</label>
+                                    <span class="material-icons">
+                                        date_range
+                                    </span>
+                                    <h4>{{livro.data_publicacao | date: 'dd/MM/YYYY'}}</h4>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <label>Idioma</label>
+                                    <span class="material-icons">
+                                        g_translate
+                                    </span>
+                                    <h4>{{livro.idioma}}</h4>
+                                </div> -->
+                            </div>
+                            <div class="row my-4">
+                                <div class="col-12">
+                                    <b><span>Sinopse:</span></b>
+                                    {{livro.sinopse}}
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="row mt-2">
-                        <div class="col-12">
-                            <label class="form-control-label font-weight-bold">Descrição: </label>
-                            {{livro.sinopse}}
-                        </div>
 
                     </div>
                     <div class="row">

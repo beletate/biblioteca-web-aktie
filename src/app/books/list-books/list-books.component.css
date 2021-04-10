@@ -8,3 +8,21 @@
     font-size: 45px;
 }
 
+img{
+    box-shadow: 0 2px 5px 1px rgb(0 0 0 / 20%);
+}
+
+.rpi-attribute-content {
+    min-height: 7.1428em;
+    display: flex;
+    flex-direction: column;
+}
+
+.a-spacing-small, .a-ws .a-ws-spacing-small {
+    margin-bottom: 8px!important;
+}
+
+.a-text-center {
+    text-align: center!important;
+    margin-bottom: 10px;
+}
