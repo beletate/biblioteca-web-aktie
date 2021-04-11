@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
 import { map, switchMap } from 'rxjs/operators';
+
+import { ConfirmationDialogService } from 'src/app/share/confirmation-dialog/confirmation-dialog.service';
 import { Book } from '../books';
 import { BooksService } from '../books.service';
 
 @Component({
   selector: 'app-register-books',
   templateUrl: './register-books.component.html',
-  styleUrls: ['./register-books.component.css']
+  styleUrls: ['./register-books.component.css'],
+  providers: [ConfirmationDialogService]
 })
 export class RegisterBooksComponent implements OnInit {
 
   bookForm: FormGroup
 
   constructor(
+    public confirmationDialogService: ConfirmationDialogService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private BooksService: BooksService
@@ -44,29 +49,40 @@ export class RegisterBooksComponent implements OnInit {
   }
 
   submit() {
-    if (this.bookForm.value.id) {
-      const updateBook = this.bookForm.getRawValue() as Book;
-      this.BooksService.update(updateBook).subscribe(
-        success => {
-          alert('Livro editado.')
-          this.formReset()
-        },
-        error => {
-          alert('Erro ao editar.')
+    this.confirmationDialogService.confirm('Por favor, confirme...', `Deseja continuar?`)
+      .then((confirmed) => {
+        if (confirmed == true) {
+          if (this.bookForm.value.id) {
+            const updateBook = this.bookForm.getRawValue() as Book;
+            this.BooksService.update(updateBook).subscribe(
+              success => {
+                alert('Livro editado.')
+                this.formReset()
+              },
+              error => {
+                alert('Erro ao editar.')
+              }
+            )
+          } else {
+            const createBook = this.bookForm.getRawValue() as Book;
+            this.BooksService.create(createBook).subscribe(
+              success => {
+                alert('Livro cadastrado.')
+                this.formReset()
+              },
+              error => {
+                alert('Erro ao cadastrar.')
+              }
+            )
+          }
         }
-      )
-    } else {
-      const createBook = this.bookForm.getRawValue() as Book;
-      this.BooksService.create(createBook).subscribe(
-        success => {
-          alert('Livro cadastrado.')
-          this.formReset()
-        },
-        error => {
-          alert('Erro ao cadastrar.')
+        else if (confirmed == false) {
+
         }
+      }
       )
-    }
+      .catch(() => console.log('Request denied.'));
+
   }
 
   onFileChange(event) {
