@@ -8,6 +8,11 @@
     font-size: 45px;
 }
 
+.material-icons{
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
 .has-danger input {
     background-color: #FFF5F2;
     color: #444;    

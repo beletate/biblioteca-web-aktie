@@ -1,8 +1,14 @@
 <div class="container ">
     <form [formGroup]="booksForm" novalidate>
-        <div class="row mt-5">
-            <div class="title col-sm my-4 text-center">
+        <div class="row mt-5 justify-content-center">
+            <div class="title col-sm-10 my-4 text-center">
                 <h1>Livros Cadastrados</h1>
+            </div>            
+            <div class="col-sm-2 my-5">
+                <a [routerLink]="'/cadastro/livro'">
+                <button type="button" class="btn btn-outline-primary waves-effect"><span class="material-icons">
+                    drive_file_rename_outline
+                    </span>Cadastrar</button></a>
             </div>
         </div>
         <div class="container-fluid">
@@ -80,33 +86,6 @@
                                         <b><span>{{livro.data_publicacao | date: 'dd/MM/YYYY'}}</span></b>
                                     </div>
                                 </div>
-                                <!-- <div class="col-md-3 text-center">
-                                    <label>Edição</label>
-                                    <span style="vertical-align:text-bottom; font-weight:bold"
-                                        class="material-icons">#</span>
-                                    <h4>{{livro.edicao}}ª</h4>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <label>Editora</label>
-                                    <span class="material-icons">
-                                        apartment
-                                    </span>
-                                    <h4>{{livro.editora}}</h4>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <label>Data de Publicação</label>
-                                    <span class="material-icons">
-                                        date_range
-                                    </span>
-                                    <h4>{{livro.data_publicacao | date: 'dd/MM/YYYY'}}</h4>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <label>Idioma</label>
-                                    <span class="material-icons">
-                                        g_translate
-                                    </span>
-                                    <h4>{{livro.idioma}}</h4>
-                                </div> -->
                             </div>
                             <div class="row my-4">
                                 <div class="col-12">

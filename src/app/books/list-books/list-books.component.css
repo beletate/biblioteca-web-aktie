@@ -12,6 +12,11 @@ img{
     box-shadow: 0 2px 5px 1px rgb(0 0 0 / 20%);
 }
 
+.material-icons{
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
 .rpi-attribute-content {
     min-height: 7.1428em;
     display: flex;
