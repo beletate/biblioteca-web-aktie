@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { ConfirmationDialogService } from 'src/app/share/confirmation-dialog/confirmation-dialog.service';
 import { Book } from '../books';
 import { BooksService } from '../books.service';
@@ -25,6 +26,8 @@ export class ListBooksComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllBooks();
+
+    setInterval(() => this.getAllBooks(), 5000)
 
     this.booksForm = this.formBuilder.group({
       findAll: ['']

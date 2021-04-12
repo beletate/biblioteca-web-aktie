@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { EMPTY, Observable } from 'rxjs';
-
-
 import { take } from "rxjs/operators";
 import { environment } from 'src/environments/environment';
+
 import { Book } from './books';
 
 const API = environment.apiUrl;
